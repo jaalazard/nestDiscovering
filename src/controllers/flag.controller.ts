@@ -1,27 +1,27 @@
 import { Controller, Get } from '@nestjs/common';
 import { FlagService } from 'src/services/flag.service';
 
-@Controller()
+@Controller('flags')
 export class FlagController {
   constructor(private readonly flagService: FlagService) {}
 
   @Get('/uk')
-  getGreetings(): string {
+  getEnglishFlag(): string {
     return this.flagService.getEnglishFlag();
   }
 
   @Get('/france')
-  getSalut(): string {
+  getFrenchFlag(): string {
     return this.flagService.getFrenchFlag();
   }
 
   @Get('/germany')
-  getHallo(): string {
+  getGermanFlag(): string {
     return this.flagService.getGermanFlag();
   }
 
   @Get('/spain')
-  getHola(): string {
+  getSpanishFlag(): string {
     return this.flagService.getSpanishFlag();
   }
 }
