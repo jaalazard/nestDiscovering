@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { GreetingService } from '../services/greeting.service';
 
 @Controller()
@@ -23,5 +23,10 @@ export class GreetingController {
   @Get('/hola')
   getHola(): string {
     return this.greetingService.getSpanishGreetings();
+  }
+
+  @Post('/greetings')
+  createGreeting(@Body('name') name: string): string {
+    return this.greetingService.createGreeting(name);
   }
 }

@@ -6,9 +6,25 @@ import { FlagModule } from './modules/flag.module';
 import { PawModule } from './modules/paw.module';
 import { ExampleModule } from './modules/example.module';
 import { QueryModule } from './modules/query.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
+import { databaseConfig } from './config/database.config';
+import { UsersModule } from './modules/users.module';
 
 @Module({
-  imports: [GreetingModule, FlagModule, PawModule, ExampleModule, QueryModule],
+  imports: [
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+
+      useFactory: () => databaseConfig,
+    }),
+    GreetingModule,
+    FlagModule,
+    PawModule,
+    ExampleModule,
+    QueryModule,
+    UsersModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

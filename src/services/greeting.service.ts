@@ -14,4 +14,8 @@ export class GreetingService {
   getSpanishGreetings(): string {
     return 'Hola Mundo!';
   }
+
+  createGreeting(name: string): string {
+    return `Hello ${name}!`;
+  }
 }
