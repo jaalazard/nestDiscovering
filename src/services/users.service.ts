@@ -21,6 +21,10 @@ export class UsersService {
     });
   }
 
+  async getUserByEmail(email: string): Promise<User> {
+    return await this.usersRepository.findOneBy({ email: email });
+  }
+
   saveUser(user: User): Promise<User> {
     return this.usersRepository.save(user);
   }
